@@ -1,0 +1,13 @@
+header {
+    background-color: black;
+    color: white;
+    border: thistle;
+    height: 100px;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+}

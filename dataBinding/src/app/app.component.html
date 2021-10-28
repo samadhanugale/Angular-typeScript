@@ -1,0 +1,26 @@
+<h2>Data Binding</h2>
+<h3>One Way Data Binding</h3>
+<div>
+    <h2>{{title}}</h2>
+</div>
+<button (click)="changeTitle()">Button</button>
+<br>
+<hr>
+<i>Addition of 12 + 14 : {{ num1+num2 }}</i>
+<p> Multiplication of 12 & 14 is : {{mul()}}</p>
+<br>
+<button (click)="greet()">Console msg</button>
+<br>
+<button (click)="showInfo($event)">Event show msg</button>
+
+<p (mouseover)="overTest()">
+    mouse over event
+</p>
+
+<section>
+    <h2>Two way Data Binding</h2>
+    {{companyName}}
+    <br>
+    <label for="">Enter company Name : </label>
+    <input type="text" [(ngModel)]="companyName" (keyup)="showCompany()">
+</section>
