@@ -9,3 +9,11 @@ li {
     padding: 5px;
     text-align: center;
 }
+
+.borderClass {
+    border: 2px dashed red;
+}
+
+.styleClass {
+    text-decoration: underline;
+}

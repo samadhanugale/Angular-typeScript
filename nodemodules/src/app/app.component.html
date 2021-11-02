@@ -220,4 +220,36 @@
     <p [ngStyle]="myStyle">
         This is some test Text <br> Lets apply styles here
     </p>
+
+
+    <br><br>
+    <hr>
+    <h3 class="">Neosoft Technologies</h3>
+    <h3 [ngClass]="{borderClass:true,styleClass:false}">Neosoft Technologies</h3>
+    <h3 [ngClass]="myCss">Neosoft Technologies</h3>
+    <h3 [ngClass]="myCssArray">Neosoft Technologies</h3>
+    <button (click)="myCssArray.pop()">POP</button><br>
+    <b *ngFor="let ele of myCssArray">{{ele}}</b><br>
+    <span>{{myCssArray}}</span>
+
+    <section>
+        <h2>More examples of attribute binding</h2>
+        <br>
+        <button (click)="zoomIn()">Zoom In</button>
+        <button (click)="zoomOut()">Zoom Out</button><br>
+        <img [src]="imgsrc" [height]="imgheight" [width]="imgwidth">
+    </section>
+    <br>
+    <hr>
+
+    <section>
+        <span>Meter : </span>
+        <meter [value]="mtr" min="0" max="100"> </meter>
+    </section>
+    <br>
+    <hr>
+    <select [(ngModel)]="myCity">
+        <option *ngFor="let city of cityArray" [value]="city">{{city.toUpperCase()}}</option>
+    </select>
+    <span>{{myCity}}</span>
 </div>

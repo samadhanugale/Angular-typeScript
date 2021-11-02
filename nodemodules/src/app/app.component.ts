@@ -59,6 +59,24 @@ export class AppComponent {
   update2(newFont: string) {
     this.myStyle['font-size.px'] = parseInt(newFont)
   }
+
+  myCss={borderClass:true,styleClass:true};
+  myCssArray=['borderClass','styleClass'];
+
+  imgsrc="assets/images/image2.jpg";
+  imgheight=300;
+  imgwidth=570;
+  zoomIn(){
+    this.imgheight+=20;
+    this.imgwidth+=20;
+  }
+  zoomOut(){
+   this.imgheight-=20;
+   this.imgwidth-=20;
+  }
+  mtr=30;
+  cityArray=['Nashik','Mumbai','Pune','Bangalore'];
+  myCity="Goa";
 }
 
 class Book {
