@@ -1,0 +1,11 @@
+.block {
+    background: linear-gradient(230deg, #a9d8e4, #c4d4d8);
+}
+
+li {
+    display: inline-block;
+    border: 2px solid maroon;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}

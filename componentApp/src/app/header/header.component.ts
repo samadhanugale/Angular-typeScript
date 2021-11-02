@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
+  }
+  sampleName:string= "HOME";
+  constructor(){
+    setTimeout(()=>this.sampleName = "HOME",6000);
+  }
+  changeTitle(){
+    this.sampleName = "GO HOME";
   }
 
 }

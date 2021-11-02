@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'componentApp';
+
+
+  sampleName:string= "initial String";
+  constructor(){
+    setTimeout(()=>this.sampleName = "Initial Text",6000);
+  }
+  changeTitle(){
+    this.sampleName = "Changed Name";
+  }
 }

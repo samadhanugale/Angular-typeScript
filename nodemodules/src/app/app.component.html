@@ -1,0 +1,223 @@
+<div class="block">
+    <section>
+        <label for="">Enter Age : </label>
+        <input type="number" [(ngModel)]="age">
+    </section>
+    <i>Age is {{age}}</i>
+    <br>
+    <p *ngIf="age>18">
+        <b>You are Eligible to vote</b>
+    </p>
+    <hr>
+    <section>
+        <label for="">Enter Age : </label>
+        <input type="number" [(ngModel)]="age">
+    </section>
+    <i>Age is {{age}}</i>
+    <br>
+    <p *ngIf="age>18 else elseBlock">
+        <b>You are Eligible to vote</b>
+    </p>
+    <ng-template #elseBlock>
+        <br>
+        <b>sorry you are not eligible to vote</b>
+    </ng-template>
+
+    <hr>
+    <section>
+        <label for="">Enter Age : </label>
+        <input type="number" [(ngModel)]="age">
+    </section>
+    <i>Age is {{age}}</i>
+    <br>
+    <p *ngIf="age>18 then ifBlock ; else elseBlock">
+
+
+    </p>
+    <ng-template #ifBlock>
+        <br>
+        <b>You are Eligible to vote</b>
+    </ng-template>
+    <ng-template #elseBlock>
+        <br>
+        <b>sorry you are not eligible to vote</b>
+    </ng-template>
+    <hr>
+    <hr>
+    <h2>Given Array List</h2>
+    <ul *ngFor="let item of numArray">
+        <li>
+            {{ item }}
+        </li>
+    </ul>
+    <div>
+        <h2>Even Elements From Aray</h2>
+        <ul *ngFor="let item of numArray">
+            <li *ngIf="item % 2 == 0">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>Odd Elements From Aray</h2>
+        <ul *ngFor="let item of numArray">
+            <li *ngIf="item % 2 != 0">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <section>
+        <br>
+        <h2>Enter Marks out of 100</h2>
+        <label for="">Enter Subject 1 Marks : </label>
+        <input type="number" [(ngModel)]="sub1">
+        <br><br>
+        <label for="">Enter Subject 2 Marks : </label>
+        <input type="number" [(ngModel)]="sub2">
+        <br><br>
+        <label for="">Enter Subject 3 Marks : </label>
+        <input type="number" [(ngModel)]="sub3">
+    </section>
+    <br><br>
+    <i>Total Marks :  {{(sub1+sub2+sub3)}}</i>
+    <br><br>
+    <b>Percentage : {{(((sub1+sub2+sub3)/300)*100)}}</b>
+    <br><br>
+    <p *ngIf="(((sub1+sub2+sub3)/300)*100)<=40 then fail else pass">
+    </p>
+    <ng-template #fail>
+        <b>You are Failed</b>
+    </ng-template>
+    <ng-template #pass>
+        <ng-container *ngIf="(((sub1+sub2+sub3)/300)*100)>=40 && (((sub1+sub2+sub3)/300)*100)<=60  then passgood else passverygoood"></ng-container>
+        <ng-template #passgood>
+            <b>Passed Average</b>
+        </ng-template>
+        <ng-template #passverygoood>
+            <b>Passed Excellent</b>
+        </ng-template>
+    </ng-template>
+    <br>
+    <hr>
+    <table border="2">
+        <tr *ngFor="let item1 of numArray; let i = index; let c = count; let e = even; let first = first; let last = last">
+            <td><span *ngIf="e==true; else elseblock">{{item1*2}}</span>
+                <ng-template #elseblock> <span>{{item1}}</span>
+                </ng-template>
+            </td>
+
+            <td>Index : {{i}}</td>
+            <td>Count : {{c}}</td>
+            <td>Even : {{e}}</td>
+            <td>First : {{first}}</td>
+            <td>Last : {{last}}</td>
+        </tr>
+    </table>
+    <hr>
+
+    <section>
+        <ul>
+            <li *ngFor="let item2 of numArray">{{item2}}</li>
+        </ul>
+        <h2>Use of ngSwitch</h2>
+        <h3>1 : Push 2 : Pop | Enter choice : </h3>
+        <input type="number" [(ngModel)]="choice">
+        <div [ngSwitch]="choice">
+            <div *ngSwitchCase="1">
+                <label for="">Enter Number to push</label>
+                <input type="number" #element>
+                <button (click)="addElement(element.value)"> Push</button>
+            </div>
+            <div *ngSwitchCase="2">
+                <span>Element Pop : {{removeElement()}}</span>
+            </div>
+            <div *ngSwitchDefault>
+                <span>Invalid Choice!</span>
+            </div>
+        </div>
+    </section>
+    <hr><br><br>
+    <h2>Student Marks</h2>
+    <section>
+        <br>
+        <h2>Enter Marks out of 100</h2>
+        <label for="">Enter Subject 1 Marks : </label>
+        <input type="number" #mark1>
+        <br><br>
+        <label for="">Enter Subject 2 Marks : </label>
+        <input type="number" #mark2>
+        <br><br>
+        <label for="">Enter Subject 3 Marks : </label>
+        <input type="number" #mark3>
+
+        <button (click)="totalMarks(mark1.value,mark2.value,mark3.value)">Marks </button>
+        <b>Total Marks : {{totalMark}}</b>
+        <button (click)="percentage(mark1.value,mark2.value,mark3.value)">Percentage </button>
+        <b>Percentages : {{percent}}</b>
+        <input type="number" [(ngModel)]="percent">
+        <div [ngSwitch]="choice1">
+            <div *ngSwitchCase="40>percent">
+                <i>Result : Failed!</i>
+            </div>
+            <div *ngSwitchCase="percent>=40 && percent <=60">
+                <i>Result : Pass</i>
+            </div>
+            <div *ngSwitchCase="percent>60 && percent<=70 ">
+                <i>Result : First Class</i>
+            </div>
+            <div *ngSwitchCase="percent>70">
+                <i>Result : Distinction</i>
+            </div>
+        </div>
+    </section>
+
+    <br><br>
+    <hr>
+
+
+    <section>
+        <table border="2">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Author</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of bookArray">
+                    <td>{{book.bookId}}</td>
+                    <td>{{book.bookName}}</td>
+                    <td>{{book.bookPrice}}</td>
+                    <td><i *ngFor="let author of book.authorNames">{{author}},</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <br><br>
+    <!-- <select [(ngModel)]="myColor">
+        <option value="red">REDGREEN</option>
+        <option value="blue">BLUE</option>
+    </select> -->
+    <span>Choose Color : </span>
+    <input type="color" [(ngModel)]="myColor">
+    <span>Choose Background Color : </span>
+    <input type="color" [(ngModel)]="background">
+    <h2 [ngStyle]="{'color':myColor,'background':background}">Neosoft Technologies</h2>
+
+
+    <br>
+    <hr><br>
+    <label for="">Choose Color : </label>
+    <input type="color" #colornode (input)="update1(colornode.value)">
+    <label for="">Enter Font Size : </label>
+    <input type="number" #fontnode (input)="update2(fontnode.value)">
+    <p [ngStyle]="myStyle">
+        This is some test Text <br> Lets apply styles here
+    </p>
+</div>
