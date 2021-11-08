@@ -249,7 +249,15 @@
     <br>
     <hr>
     <select [(ngModel)]="myCity">
-        <option *ngFor="let city of cityArray" [value]="city">{{city.toUpperCase()}}</option>
+        <option *ngFor="let city of cityArray" [value]="city">{{city | uppercase}}</option>
+        <option *ngFor="let city of cityArray" [value]="city">{{city | titlecase}}</option>
     </select>
-    <span>{{myCity}}</span>
+    <span class="aqua-gradient">City Choosen : {{myCity}}</span>
+
+    <br><br>
+    <hr>
+    <button class="btn btn-success">SAMPLE BOOTSTRAP BUTTON</button>
+    <button class="btn btn-info">SAMPLE BOOTSTRAP BUTTON</button>
+    <br><br>
+    <hr>
 </div>

@@ -1,0 +1,129 @@
+<section>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>BooName</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>short Date</th>
+                <th>short time</th>
+                <th>medium date</th>
+                <th>Full Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let book of bookArray">
+                <td>{{book.bookId}}</td>
+                <td>{{book.bookName | uppercase}}</td>
+                <!-- <td>{{book.bookName | lowercase}}</td>
+                <td>{{book.bookName | titlecase}}</td> -->
+                <td>{{book.bookPrice}}</td>
+                <!-- <td>{{book.publishDate}}</td> -->
+                <!-- <td>{{book.publishDate | date}}</td> -->
+                <td>{{book.publishDate | date : 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <!-- <td>{{book.publishDate | date : 'd/M/yy'}}</td> -->
+                <td>{{book.publishDate | date : 'shortDate'}}</td>
+                <td>{{book.publishDate | date : 'shortTime'}}</td>
+                <td>{{book.publishDate | date : 'mediumDate'}}</td>
+                <td>{{book.publishDate | date : 'fullDate' | uppercase}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <ng-content></ng-content>
+    <div>
+        <input [type]="passType" placeholder="password">
+        <br> Show Password
+        <input type="checkbox" (click)="changePasswordType()">
+    </div>
+
+
+</section>
+
+<section>
+    <h2 class="h3 text-center text-success">Slice, Number, Currency</h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>BooName</th>
+                <th>Slice(StartIndex)</th>
+                <th>Slice(StartIndex:endIndex)</th>
+                <th>Slice(-SI)</th>
+                <th>Price</th>
+                <th>Price - number</th>
+                <th>Price Currency</th>
+                <!-- <th>Price symb</th> -->
+                <th>Price symb</th>
+                <th>Price letter</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let book of bookArray">
+                <td>{{book.bookId}}</td>
+                <td>{{book.bookName | uppercase}}</td>
+                <td>{{book.bookName | slice : 3}}</td>
+                <td>{{book.bookName | slice : 3:8}}</td>
+                <td>{{book.bookName | slice : -8:-1}}</td>
+                <!-- Slicing from index 3 -->
+                <td>{{book.bprice }}</td>
+                <td>{{book.bprice | number : '3.3-3'}}</td>
+                <td>{{book.bprice | currency }}</td>
+                <!-- $:Default, 2 Decimal digits, 0-3 range -->
+                <!-- <td>{{book.bprice | currency : 'INR' }}</td> -->
+                <td>{{book.bprice | currency : 'JPY' }}</td>
+                <td>{{book.bprice | currency : 'JPY' : false }}</td>
+                <!-- <td>{{book.bprice | currency : 'YEN' : 'true' }}</td> -->
+                <!-- Customized symbol -->
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+
+</section>
+
+<section>
+    <h2 class="h3 text-center text-info">Order Pipe</h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th style="cursor: pointer" [class.active]="orderBy === 'bookId'" (click)="order('bookId')">ID<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" class="mdl-data-table__cell--non-numeric" [class.active]="orderBy === 'bookName'" (click)="order('bookName')">BooName<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" [class.active]="orderBy === 'bookPrice'" (click)="order('bookPrice')">Price<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" [class.active]="orderBy === 'publishDate'" (click)="order('publishDate')">publish Date<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let book of bookArray | orderBy:orderBy :reverse:false">
+                <!-- True : descending, false:Ascending -->
+                <td>{{book.bookId}}</td>
+                <td>{{book.bookName | lowercase}}</td>
+                <!-- <td>{{book.bookName | charAt : 2}}</td> -->
+
+                <td>{{book.bookPrice}}</td>
+
+                <td>{{book.publishDate | date}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+
+
+</section>
