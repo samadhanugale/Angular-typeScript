@@ -24,6 +24,8 @@ export class AppComponent {
     this.sortedCollection = orderPipe.transform(this.bookArray, 'bookId');
     console.log(this.sortedCollection);
   }
+  public searchFilter: any = '';
+  query:any="";
 
   passType= 'password';
 

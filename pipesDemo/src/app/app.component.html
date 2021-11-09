@@ -91,6 +91,44 @@
 </section>
 
 <section>
+    <h2 class="h3 text-center text-info">Search Pipe</h2>
+    <div class="form-group">
+        <input type="text" class="form-control mb-4" placeholder="Search" [(ngModel)]="query" id="listSearch">
+    </div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th style="cursor: pointer" [class.active]="orderBy === 'bookId'" (click)="order('bookId')">ID<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" class="mdl-data-table__cell--non-numeric" [class.active]="orderBy === 'bookName'" (click)="order('bookName')">BooName<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" [class.active]="orderBy === 'bookPrice'" (click)="order('bookPrice')">Price<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+                <th style="cursor: pointer;" [class.active]="orderBy === 'publishDate'" (click)="order('publishDate')">publish Date<span [hidden]="reverse">▼</span
+                    ><span [hidden]="!reverse">▲</span></th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let book of bookArray | searchFilter: query">
+                <!-- True : descending, false:Ascending -->
+                <td>{{book.bookId}}</td>
+                <td>{{book.bookName | lowercase}}</td>
+                <!-- <td>{{book.bookName | charAt : 2}}</td> -->
+
+                <td>{{book.bookPrice}}</td>
+
+                <td>{{book.publishDate | date}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+</section>
+
+<section>
     <h2 class="h3 text-center text-info">Order Pipe</h2>
     <table class="table table-dark">
         <thead>

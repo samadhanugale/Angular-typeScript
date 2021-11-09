@@ -1,0 +1,29 @@
+input.ng-untouched {
+    background-color: aquamarine;
+}
+
+input.ng-touched {
+    background-color: burlywood;
+}
+
+
+/* input.ng-pristine {
+    border: 4px solid red;
+} */
+
+
+/* input.ng-dirty {
+    border: 4px dashed blue;
+} */
+
+input.ng-valid {
+    border: 4px solid green;
+}
+
+input.ng-invalid {
+    border: 4px solid red;
+}
+
+.requiredField {
+    color: red;
+}

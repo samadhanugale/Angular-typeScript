@@ -1,0 +1,69 @@
+<section>
+    <section>
+        <form [formGroup]="registerForm" (ngSubmit)="registerFun()">
+            <label for="">user Name : </label>
+            <input type="text" formControlName="userName">
+            <br>
+            <div *ngIf="!uname.valid && uname.touched">
+                <span *ngIf="uname.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <label for="">Password : </label>
+            <input type="password" formControlName="password">
+            <br>
+            <div *ngIf="!pass.valid && pass.touched">
+                <span *ngIf="pass.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <label>confirm Password : </label>
+            <input type="password" formControlName="confirmPassword">
+            <br>
+            <div *ngIf="!confPass.valid && confPass.touched">
+                <span *ngIf="confPass.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <label>Age : </label>
+            <input type="number" formControlName="age">
+            <br>
+            <div *ngIf="!userAge.valid && userAge.touched">
+                <span *ngIf="userAge.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <label>Email ID : </label>
+            <input type="email" formControlName="email">
+            <br>
+            <div *ngIf="!mail.valid && mail.touched">
+                <span *ngIf="mail.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <label>Mobile Number : </label>
+            <input type="number" formControlName="phno">
+            <br>
+            <div *ngIf="!phone.valid && phone.touched">
+                <span *ngIf="phone.errors.required ">
+                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+                </span>
+
+            </div>
+            <br>
+            <input type="reset"><input type="submit">
+
+
+        </form>
+    </section>
+</section>

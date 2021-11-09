@@ -1,0 +1,12 @@
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="loginFun()">
+        <label for="">user Name : </label>
+        <input type="text" name="userName" formControlName="userName">
+        <label for="">Password : </label>
+        <input type="password" name="password" formControlName="password">
+        <input type="reset"><input type="submit">
+
+    </form>
+</section>
+<br><br><br>
+<hr>

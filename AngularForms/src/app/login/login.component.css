@@ -1,0 +1,7 @@
+input.ng-untouched {
+    background-color: aquamarine;
+}
+
+input.ng-touched {
+    background-color: burlywood;
+}
