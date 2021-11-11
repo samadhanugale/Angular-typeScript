@@ -1,0 +1,24 @@
+<section>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Food Name</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let food of foodArray">
+                <td>{{food.foodId}}</td>
+                <td>{{food.foodName }}</td>
+                <td>{{food.foodPrice}}</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+</section>

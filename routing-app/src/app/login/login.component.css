@@ -1,0 +1,17 @@
+input.ng-untouched {
+    background-color: rgb(165, 226, 206);
+}
+
+input.ng-touched {
+    background-color: burlywood;
+}
+
+button {
+    margin: 5px;
+}
+
+label,
+input,
+small {
+    margin-left: 10px;
+}

@@ -1,0 +1,17 @@
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="loginFun()">
+        <div class="form-group">
+            <label for="">user Name : </label>
+            <input type="text" id="input" class="form-control" name="userName" formControlName="userName">
+        </div>
+        <div>
+            <label for="">Password : </label>
+            <input type="password" id="input" name="password" class="form-control" formControlName="password">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your info with anyone else.</small>
+        </div>
+        <input type="reset" class="btn btn-primary"> <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</section>
+<br><br><br>
+<hr>

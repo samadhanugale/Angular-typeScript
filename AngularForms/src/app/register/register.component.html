@@ -4,60 +4,102 @@
             <label for="">user Name : </label>
             <input type="text" formControlName="userName">
             <br>
-            <div *ngIf="!uname.valid && uname.touched">
-                <span *ngIf="uname.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!uname.valid && uname.touched">
+                <span *ngIf="uname.errors.required; else nameelse ">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #nameelse>
+                    <span *ngIf="uname.errors.pattern">
+                        <b>Name should have Alphabates only!</b>
+                    </span>
+
+                </ng-template>
 
             </div>
             <br>
             <label for="">Password : </label>
-            <input type="password" formControlName="password">
+            <input type="password" formControlName="password" (change)="onPasswordChange()" ngModel>
             <br>
-            <div *ngIf="!pass.valid && pass.touched">
-                <span *ngIf="pass.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!pass.valid && pass.touched">
+                <span *ngIf="pass.errors.required;else passelse  ">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #passelse>
+                    <span *ngIf="pass.errors.minlength || pass.errors.maxlength; else passelse2">
+                        Password should be min 4 and max 12 characters
+                    </span>
+                    <ng-template #passelse2>
+                        <span *ngIf="pass.errors.pattern">
+                            password should contains Capital, small letters and numbers
+                        </span>
+                    </ng-template>
+                </ng-template>
 
             </div>
             <br>
             <label>confirm Password : </label>
-            <input type="password" formControlName="confirmPassword">
+            <input type="password" formControlName="confirmPassword" (change)="onPasswordChange()" ngModel>
             <br>
-            <div *ngIf="!confPass.valid && confPass.touched">
-                <span *ngIf="confPass.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!confPass.valid && confPass.touched">
+                <span *ngIf="confPass.errors.required; else elspass ">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #elspass>
+                    <span *ngIf="confPass.hasError('mismatch')">
+                        <b>Password not matched!</b>
+                    </span>
+                </ng-template>
 
             </div>
             <br>
             <label>Age : </label>
             <input type="number" formControlName="age">
             <br>
-            <div *ngIf="!userAge.valid && userAge.touched">
-                <span *ngIf="userAge.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!userAge.valid && userAge.touched">
+                <span *ngIf="userAge.errors.required; else ageelse ">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #ageelse>
+                    <span *ngIf="userAge.errors.max || userAge.errors.min">
+                        <b>Age should not be more than 120 and less than 1!</b>
+                    </span>
+                </ng-template>
 
             </div>
             <br>
             <label>Email ID : </label>
             <input type="email" formControlName="email">
             <br>
-            <div *ngIf="!mail.valid && mail.touched">
-                <span *ngIf="mail.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!mail.valid && mail.touched">
+                <span *ngIf="mail.errors.required; else emailelse ">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #emailelse>
+                    <span *ngIf="mail.errors.email">
+                        <b>Invalid email!</b>
+                    </span>
+                </ng-template>
 
             </div>
             <br>
             <label>Mobile Number : </label>
             <input type="number" formControlName="phno">
             <br>
-            <div *ngIf="!phone.valid && phone.touched">
-                <span *ngIf="phone.errors.required ">
-                    <i [ngClass]="{requiredField:true}">This field is required!</i>
+            <div [ngClass]="{requiredField:true}" *ngIf="!phone.valid && phone.touched">
+                <span *ngIf="phone.errors.required; else mobileelse">
+                    <i >This field is required!</i>
                 </span>
+                <ng-template #mobileelse>
+                    <span *ngIf="phone.errors.pattern; else mobileelse2">
+                        Invalid mobile No pattern!
+                    </span>
+                    <ng-template #mobileelse2>
+                        <span *ngIf="phone.errors.minlength || phone.errors.maxlength">
+                            min 10 max 11 Digits allowed!
+                    </span>
+                    </ng-template>
+                </ng-template>
+
 
             </div>
             <br>
